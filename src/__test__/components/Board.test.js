@@ -9,13 +9,15 @@ test('renders board component', async () => {
     expect(screen.getByTestId("square" + String(i))).toBeInTheDocument()
     expect(screen.getByTestId("square" + String(i)).innerHTML).toBe(test_squares[i])
   }
+  expect(screen.getByText("Next player: X")).toBeInTheDocument();
   await userEvent.click(screen.getByTestId("square0"))
   test_squares[0] = "X"
   for (let i = 0; i < 9; i++) {
     expect(screen.getByTestId("square" + String(i)).innerHTML).toBe(test_squares[i])
   }
+  expect(screen.getByText("Next player: O")).toBeInTheDocument();
   await userEvent.click(screen.getByTestId("square1"))
-  test_squares[1] = "X"
+  test_squares[1] = "O"
   for (let i = 0; i < 9; i++) {
     expect(screen.getByTestId("square" + String(i)).innerHTML).toBe(test_squares[i])
   }
